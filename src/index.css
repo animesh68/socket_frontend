@@ -1,0 +1,260 @@
+:root {
+  --bg-main: #0a0a0a;
+  --bg-sidebar: #111;
+  --pink-main: #ff6ec7;
+  --pink-neon: #ff1493;
+  --pink-glow: #ff00ff;
+  --blue-main: #00d2ff;
+  --blue-neon: #3a7bd5;
+  --blue-glow: #007bff;
+  --text-light: #f5f5f5;
+}
+
+/* Global */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-light);
+}
+
+/* Layout */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: var(--bg-sidebar);
+  padding: 20px;
+  border-right: 1px solid rgba(255, 20, 147, 0.2);
+}
+
+.sidebar h2 {
+  color: var(--pink-main);
+  text-shadow: 0 0 10px var(--pink-glow);
+}
+
+.room {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.room:hover {
+  background: rgba(255, 20, 147, 0.2);
+  box-shadow: 0 0 10px var(--pink-neon);
+}
+
+/* Chat Section */
+.chat-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat Window */
+.chat-window {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Messages */
+.message {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.message .user {
+  font-size: 12px;
+  color: var(--pink-main);
+  margin-bottom: 2px;
+}
+
+.bubble {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #1a1a1a;
+  max-width: 60%;
+  word-wrap: break-word;
+}
+
+.message.own {
+  align-items: flex-end;
+}
+
+.message.own .user {
+  color: var(--blue-main);
+}
+
+.message.own .bubble {
+  background: var(--blue-neon);
+  color: white;
+  box-shadow: 0 0 10px var(--blue-glow);
+}
+
+/* System Messages */
+.system-message {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 12px;
+  margin: 8px auto;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  width: fit-content;
+  font-style: italic;
+}
+
+/* Connection Error Banner */
+.connection-error {
+  background: rgba(255, 50, 50, 0.15);
+  border-bottom: 1px solid rgba(255, 50, 50, 0.4);
+  color: #ff6b6b;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+/* Input */
+.input-box {
+  display: flex;
+  padding: 12px;
+  background: #111;
+  border-top: 1px solid rgba(255, 20, 147, 0.2);
+}
+
+.input-box input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #1a1a1a;
+  color: white;
+}
+
+.input-box input:focus {
+  box-shadow: 0 0 8px var(--pink-neon);
+}
+
+.input-box button {
+  margin-left: 10px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--pink-main);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.input-box button:hover {
+  background: var(--pink-neon);
+  box-shadow: 0 0 12px var(--pink-glow);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--pink-glow);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pink-main);
+  border-radius: 10px;
+}
+
+.message {
+  animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Login */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--bg-main);
+  width: 100vw;
+}
+
+.login-form {
+  background: #111;
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 20, 147, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+  box-shadow: 0 0 20px var(--pink-glow);
+}
+
+.login-form h2 {
+  color: var(--pink-main);
+  text-align: center;
+  margin-top: 0;
+  text-shadow: 0 0 10px var(--pink-glow);
+}
+
+.login-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #1a1a1a;
+  color: white;
+  outline: none;
+}
+
+.login-form input:focus {
+  box-shadow: 0 0 8px var(--pink-neon);
+}
+
+.login-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--pink-main);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 10px;
+}
+
+.login-form button:hover {
+  background: var(--pink-neon);
+  box-shadow: 0 0 12px var(--pink-glow);
+}
