@@ -603,3 +603,218 @@ body {
   color: rgba(255, 255, 255, 0.25);
   font-size: 14px;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HAMBURGER BUTTON — hidden on desktop, shown on mobile
+═══════════════════════════════════════════════════════════════════════════ */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--pink-main);
+  border-radius: 2px;
+  transition: 0.2s;
+}
+
+.hamburger-btn:hover {
+  background: rgba(255, 20, 147, 0.15);
+}
+
+/* X close button inside sidebar — hidden on desktop */
+.sidebar-close-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0 4px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.sidebar-close-btn:hover {
+  color: var(--pink-main);
+}
+
+/* Sidebar overlay backdrop — mobile only */
+.sidebar-overlay {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE — 768px and below
+═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── Layout ────────────────────────────────────────────────────────────── */
+  .app {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Sidebar as slide-in drawer ─────────────────────────────────────────  */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 80vw;
+    max-width: 300px;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    padding-bottom: 90px;
+    box-shadow: none;
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+    box-shadow: 4px 0 30px rgba(255, 20, 147, 0.25);
+  }
+
+  /* Dark backdrop when sidebar is open */
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  /* Show X close button inside sidebar */
+  .sidebar-close-btn {
+    display: block;
+  }
+
+  /* Show hamburger in header */
+  .hamburger-btn {
+    display: flex;
+  }
+
+  /* Chat section goes full width */
+  .chat-section {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* ── Messages ──────────────────────────────────────────────────────────── */
+  .bubble {
+    max-width: 82%;
+  }
+
+  .chat-window {
+    padding: 12px;
+  }
+
+  /* ── Input box ─────────────────────────────────────────────────────────── */
+  .input-box {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .input-box input {
+    padding: 10px;
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+
+  .input-box button {
+    padding: 10px 14px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  /* ── Chat header ───────────────────────────────────────────────────────── */
+  .chat-header {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .chat-header-avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .chat-header-name {
+    font-size: 14px;
+  }
+
+  .chat-header-sub {
+    display: none; /* save space on mobile */
+  }
+
+  /* ── Login form ────────────────────────────────────────────────────────── */
+  .login-container {
+    padding: 20px;
+    align-items: flex-start;
+    padding-top: 15vh;
+  }
+
+  .login-form {
+    width: 100%;
+    max-width: 100%;
+    padding: 28px 20px;
+    box-sizing: border-box;
+  }
+
+  .login-form input {
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+
+  /* ── Sidebar user card ─────────────────────────────────────────────────── */
+  .sidebar-user {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  /* ── Search results ────────────────────────────────────────────────────── */
+  .search-result-item {
+    padding: 12px;
+  }
+
+  /* ── Rooms / DM items ──────────────────────────────────────────────────── */
+  .room {
+    padding: 12px 10px;
+  }
+
+  .dm-item {
+    padding: 10px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   EXTRA SMALL — 480px and below (phones in portrait)
+═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .sidebar {
+    width: 90vw;
+  }
+
+  .bubble {
+    max-width: 90%;
+  }
+
+  .login-form {
+    padding: 24px 16px;
+  }
+}

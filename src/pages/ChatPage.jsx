@@ -20,6 +20,7 @@ const ChatPage = () => {
   const [chatMessages, setChatMessages] = useState({}); // keyed by chatId
   const [chatLoading, setChatLoading] = useState(false);
   const [dmConversations, setDmConversations] = useState([]); // sidebar DM list
+  const [sidebarOpen, setSidebarOpen] = useState(false); // mobile drawer
 
   const activeChatRef = useRef(activeChat); // always up-to-date in WS handler
   useEffect(() => { activeChatRef.current = activeChat; }, [activeChat]);
@@ -230,9 +231,11 @@ const ChatPage = () => {
         onChatSelect={handleChatSelect}
         dmConversations={dmConversations}
         onLogout={handleLogout}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
       <div className="chat-section">
-        <ChatHeader activeChat={activeChat} />
+        <ChatHeader activeChat={activeChat} onMenuToggle={() => setSidebarOpen(true)} />
         {connectionError && (
           <div className="connection-error">
             ⚠️ Unable to connect to the server. Make sure the backend is running.

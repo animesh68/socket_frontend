@@ -1,4 +1,4 @@
-const ChatHeader = ({ activeChat }) => {
+const ChatHeader = ({ activeChat, onMenuToggle }) => {
   if (!activeChat) return null;
 
   const isGeneral = activeChat.type === 'general';
@@ -7,6 +7,11 @@ const ChatHeader = ({ activeChat }) => {
 
   return (
     <div className="chat-header">
+      {/* Hamburger — visible only on mobile */}
+      <button className="hamburger-btn" onClick={onMenuToggle} aria-label="Toggle sidebar">
+        <span /><span /><span />
+      </button>
+
       <div className={`chat-header-avatar ${isGeneral ? 'chat-header-general' : ''}`}>
         {initial}
       </div>
