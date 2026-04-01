@@ -2,14 +2,15 @@ let socket;
 
 const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:3000';
 
-export const connectSocket = (username) => {
-    socket = new WebSocket(`${WS_URL}?username=${encodeURIComponent(username)}`);
+export const connectSocket = (username, userId) => {
+  const params = new URLSearchParams({ username, userId });
+  socket = new WebSocket(`${WS_URL}?${params.toString()}`);
 
-    socket.onopen = () => console.log("Connected to ChudTalks");
-    socket.onclose = () => console.log("Disconnected from ChudTalks");
-    socket.onerror = (err) => console.error("WebSocket error:", err);
+  socket.onopen = () => console.log('Connected to Clav');
+  socket.onclose = () => console.log('Disconnected from Clav');
+  socket.onerror = (err) => console.error('WebSocket error:', err);
 
-    return socket;
+  return socket;
 };
 
 export const getSocket = () => socket;
